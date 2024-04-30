@@ -20,4 +20,13 @@ describe('it should test createHtml', () => {
     cy.get("input").type("{enter}")
     cy.get("p").should("have.text", "Inga sökresultat att visa")
   })
+  it("It should portrait the correct movie poster", () => {
+    cy.visit('http://localhost:5173/')
+    cy.get("input").type("Star Wars").should("have.value","Star Wars")
+    cy.get("button").click();
+    cy.get("#movie-container > .movie > img:first").then(($image) => {
+      const src = $image.prop("src")
+      expect(src).to.equal("https://m.media-amazon.com/images/M/MV5BOTA5NjhiOTAtZWM0ZC00MWNhLThiMzEtZDFkOTk2OTU1ZDJkXkEyXkFqcGdeQXVyMTA4NDI1NTQx._V1_SX300.jpg")
+    })
+  })
 })
