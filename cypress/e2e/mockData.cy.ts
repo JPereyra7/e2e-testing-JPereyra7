@@ -28,7 +28,7 @@ describe('Testing the mocked Data', () => {
     cy.visit('http://localhost:5173')
     cy.intercept("GET", "http://omdbapi.com/?apikey=416ed51a&s=*", {
  
-      statusCode: 200, //why 200? för även om sökresultatet misslyckas så lyckas anropet
+      statusCode: 200, //why 200? för även om sökresultatet misslyckas så lyckas anropet 
       "Search": [
         {
           "Response": "False",
